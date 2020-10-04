@@ -1,5 +1,6 @@
 package com.florintiron.xaporepolist.data.github.di
 
+import com.florintiron.xaporepolist.BuildConfig
 import com.florintiron.xaporepolist.data.github.GithubServiceApi
 import dagger.Module
 import dagger.Provides

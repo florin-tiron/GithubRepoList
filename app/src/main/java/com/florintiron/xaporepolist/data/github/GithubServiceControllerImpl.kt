@@ -1,6 +1,7 @@
 package com.florintiron.xaporepolist.data.github
 
-import com.florintiron.xaporepolist.data.github.model.SearchRepositoriesResponse
+import com.florintiron.xaporepolist.data.github.model.Repository
+import com.florintiron.xaporepolist.data.github.model.SearchResponse
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -21,7 +22,7 @@ class GithubServiceControllerImpl @Inject constructor(
         sort: Sort?,
         sortOrder: Order?,
         pageNumber: Int?
-    ): Response<SearchRepositoriesResponse> {
+    ): Response<SearchResponse<Repository>> {
         return githubServiceApi.searchRepositories(
             queryText = query,
             sort = sort?.name,

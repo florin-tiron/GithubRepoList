@@ -1,6 +1,7 @@
 package com.florintiron.xaporepolist.data.github
 
-import com.florintiron.xaporepolist.data.github.model.SearchRepositoriesResponse
+import com.florintiron.xaporepolist.data.github.model.Repository
+import com.florintiron.xaporepolist.data.github.model.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -17,7 +18,7 @@ interface GithubServiceApi {
         @Query("order") order: String? = null,
         @Query("per_page") resultsPerPage: Int? = null,
         @Query("page") page: Int? = null
-    ): Response<SearchRepositoriesResponse>
+    ): Response<SearchResponse<Repository>>
 
 }
 
