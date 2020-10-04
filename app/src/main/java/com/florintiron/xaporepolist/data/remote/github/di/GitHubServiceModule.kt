@@ -1,7 +1,7 @@
-package com.florintiron.xaporepolist.data.github.di
+package com.florintiron.xaporepolist.data.remote.github.di
 
 import com.florintiron.xaporepolist.BuildConfig
-import com.florintiron.xaporepolist.data.github.GithubServiceApi
+import com.florintiron.xaporepolist.data.remote.github.service.GithubServiceApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor

@@ -1,4 +1,4 @@
-package com.florintiron.xaporepolist.data.github.model
+package com.florintiron.xaporepolist.data.remote.github.model
 
 /**
  * Created by Florin Tiron on 04/10/2020.
@@ -7,5 +7,5 @@ package com.florintiron.xaporepolist.data.github.model
 data class SearchResponse<T>(
     val total_count: Int,
     val incomplete_results: Boolean,
-    val items: List<T>
+    val items: List<T>?
 )
