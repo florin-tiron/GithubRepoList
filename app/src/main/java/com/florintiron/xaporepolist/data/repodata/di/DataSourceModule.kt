@@ -1,8 +1,8 @@
 package com.florintiron.xaporepolist.data.repodata.di
 
+import com.florintiron.xaporepolist.data.remote.GitHubRepoRemoteDataSource
+import com.florintiron.xaporepolist.data.remote.GitHubTrendingRemoteRemoteDataSource
 import com.florintiron.xaporepolist.data.remote.github.service.GithubServiceController
-import com.florintiron.xaporepolist.data.repodata.search.GitHubSearchRepoDataSource
-import com.florintiron.xaporepolist.data.repodata.search.GitHubTrendingRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 
@@ -14,8 +14,8 @@ class DataSourceModule {
 
 
     @Provides
-    fun providesGitHubTrendingRemoteDataSource(githubServiceController: GithubServiceController): GitHubSearchRepoDataSource {
-        return GitHubTrendingRemoteDataSourceImpl(githubServiceController)
+    fun providesGitHubTrendingRemoteDataSource(githubServiceController: GithubServiceController): GitHubRepoRemoteDataSource {
+        return GitHubTrendingRemoteRemoteDataSource(githubServiceController)
     }
 
 }
