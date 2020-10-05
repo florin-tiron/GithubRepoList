@@ -16,7 +16,7 @@ import kotlin.properties.Delegates
 class ListRepoAdapter @Inject constructor() :
     RecyclerView.Adapter<ListRepoAdapter.ViewHolder>() {
 
-    internal var collection: List<RepoListItemModel>
+    internal var repoCollection: List<RepoListItemModel>
             by Delegates.observable(emptyList()) { _, _, _ ->
                 notifyDataSetChanged()
             }
@@ -32,11 +32,11 @@ class ListRepoAdapter @Inject constructor() :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(collection[position], clickListener)
+        holder.bind(repoCollection[position], clickListener)
     }
 
     override fun getItemCount(): Int {
-        return collection.size
+        return repoCollection.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

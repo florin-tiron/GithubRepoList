@@ -8,5 +8,5 @@ import com.florintiron.xaporepolist.data.util.DataResult
  * Created by Florin Tiron on 04/10/2020.
  */
 interface GitHubSearchRepoDataSource {
-    suspend fun genTrendingKotlinRepositories(page: Int?): DataResult<SearchResponse<RepositoryRemote>>
+    suspend fun getRepositories(page: Int?): DataResult<SearchResponse<RepositoryRemote>>
 }

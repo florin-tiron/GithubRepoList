@@ -25,8 +25,8 @@ class GithubServiceControllerImpl @Inject constructor(
     ): Response<SearchResponse<RepositoryRemote>> {
         return githubServiceApi.searchRepositories(
             queryText = query,
-            sort = sort?.name,
-            order = sortOrder?.name,
+            sort = sort?.type,
+            order = sortOrder?.type,
             resultsPerPage = resultPerPage,
             page = pageNumber
         )

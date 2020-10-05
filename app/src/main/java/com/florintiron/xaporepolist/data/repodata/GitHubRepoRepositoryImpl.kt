@@ -10,15 +10,14 @@ import com.florintiron.xaporepolist.mapper.ListMapper
  */
 
 class GitHubRepoRepositoryImpl<R> constructor(
-    val remoteDateSource: GitHubSearchRepoDataSource,
-    val mapper: ListMapper<RepositoryRemote, R>
+    private val remoteDateSource: GitHubSearchRepoDataSource,
+    private val mapper: ListMapper<RepositoryRemote, R>
 ) : GitHubRepoRepository<R> {
 
 
-    override suspend fun getRepositories(page: Int): DataResult<List<R>> {
-        val result = remoteDateSource.genTrendingKotlinRepositories(page)
+    override suspend fun getRepositories(page: Int?): DataResult<List<R>> {
         return try {
-            when (result) {
+            when (val result = remoteDateSource.getRepositories(page)) {
                 is DataResult.Success -> {
                     DataResult.Success(mapper.map(result.data.items))
                 }
@@ -30,6 +29,4 @@ class GitHubRepoRepositoryImpl<R> constructor(
             return DataResult.Error(ex)
         }
     }
-
-
 }
