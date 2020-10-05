@@ -6,7 +6,7 @@ import com.florintiron.xaporepolist.presentation.list.RepoListItemModel
 /**
  * Created by Florin Tiron on 04/10/2020.
  */
-class GitHubRepoSearchResponseMapper :
+class GitHubRepoDomainMapper :
     Mapper<RepositoryEntity, RepoListItemModel> {
 
     override fun map(input: RepositoryEntity): RepoListItemModel {
