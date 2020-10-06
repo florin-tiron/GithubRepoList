@@ -2,6 +2,7 @@ package com.florintiron.xaporepolist.mapper
 
 import com.florintiron.xaporepolist.data.local.RepositoryEntity
 import com.florintiron.xaporepolist.data.remote.github.model.RepositoryRemote
+import com.florintiron.xaporepolist.presentation.details.RepoDetailsModel
 import com.florintiron.xaporepolist.presentation.list.RepoListItemModel
 import dagger.Module
 import dagger.Provides
@@ -14,12 +15,17 @@ import dagger.Provides
 class DataMapperModule {
 
     @Provides
-    fun provideDomainLocalMapper(): Mapper<RepositoryEntity, RepoListItemModel> {
-        return GitHubRepoDomainMapper()
+    fun provideRepoLocalMapper(): Mapper<RepositoryRemote, RepositoryEntity> {
+        return GitHubRepoLocalMapper()
     }
 
     @Provides
-    fun provideRepoLocalMapper(): Mapper<RepositoryRemote, RepositoryEntity> {
-        return GitHubRepoLocalMapper()
+    fun provideListRepoDomainLocalMapper(): Mapper<RepositoryEntity, RepoListItemModel> {
+        return GitHubRepoListDomainMapper()
+    }
+
+    @Provides
+    fun provideRepoDetailsDomainLocalMapper(): Mapper<RepositoryEntity, RepoDetailsModel> {
+        return GitHubRepoDetailsDomainMapper()
     }
 }

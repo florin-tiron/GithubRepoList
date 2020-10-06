@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.florintiron.xaporepolist.R
@@ -55,7 +56,7 @@ class ListRepoFragment : BaseFragment() {
         )
         repoList.adapter = listRepoAdapter
         listRepoAdapter.clickListener = {
-            Toast.makeText(requireContext(), it.name, Toast.LENGTH_SHORT).show()
+            navigateToDetails(it)
         }
     }
 
@@ -75,5 +76,9 @@ class ListRepoFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         listRepoViewModel.loadList()
+    }
+
+    private fun navigateToDetails(model: RepoListItemModel) {
+        findNavController().navigate(ListRepoFragmentDirections.displayRepositoryDetails(model.id))
     }
 }

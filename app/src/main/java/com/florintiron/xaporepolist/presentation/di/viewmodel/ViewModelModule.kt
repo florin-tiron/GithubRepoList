@@ -2,6 +2,7 @@ package com.florintiron.xaporepolist.presentation.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.florintiron.xaporepolist.presentation.details.RepoDetailsViewModel
 import com.florintiron.xaporepolist.presentation.list.ListRepoViewModel
 import dagger.Binds
 import dagger.Module
@@ -19,5 +20,10 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ListRepoViewModel::class)
-    abstract fun bindRepositoryViewModel(listRepoViewModel: ListRepoViewModel): ViewModel
+    abstract fun bindListRepoViewModel(listRepoViewModel: ListRepoViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RepoDetailsViewModel::class)
+    abstract fun bindRepoDetailsViewModel(repoDetailsViewModel: RepoDetailsViewModel): ViewModel
 }

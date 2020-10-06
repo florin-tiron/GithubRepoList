@@ -8,6 +8,6 @@ import com.florintiron.xaporepolist.data.util.DataResult
 
 interface GitHubRepoLocalDataSource {
 
-    suspend fun getRepositories(): DataResult<List<RepositoryEntity>>
-    suspend fun saveRepositories(list: List<RepositoryEntity>)
+    suspend fun getGitHubRepos(): DataResult<List<RepositoryEntity>>
+    suspend fun saveGitHubRepos(list: List<RepositoryEntity>)
 }

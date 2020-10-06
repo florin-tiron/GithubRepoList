@@ -1,5 +1,6 @@
 package com.florintiron.xaporepolist.mapper
 
+import com.florintiron.xaporepolist.data.local.OwnerEntity
 import com.florintiron.xaporepolist.data.local.RepositoryEntity
 import com.florintiron.xaporepolist.data.remote.github.model.RepositoryRemote
 
@@ -19,7 +20,12 @@ class GitHubRepoLocalMapper :
             input.updated_at,
             input.stargazers_count,
             input.watchers_count,
-            input.language
+            input.open_issues_count,
+            input.language,
+            OwnerEntity(
+                input.owner.login,
+                input.owner.avatar_url
+            )
         )
     }
 

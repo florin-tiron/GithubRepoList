@@ -9,6 +9,7 @@ import com.florintiron.xaporepolist.data.remote.github.model.RepositoryRemote
 import com.florintiron.xaporepolist.data.repodata.GitHubRepoRepository
 import com.florintiron.xaporepolist.data.repodata.GitHubRepoRepositoryImpl
 import com.florintiron.xaporepolist.mapper.Mapper
+import com.florintiron.xaporepolist.presentation.details.RepoDetailsModel
 import com.florintiron.xaporepolist.presentation.list.RepoListItemModel
 import dagger.Module
 import dagger.Provides
@@ -26,13 +27,30 @@ import dagger.Provides
 class DataRepositoryModule {
 
     @Provides
-    fun provideGithubSearchRepository(
+    fun provideGithubRepoListRepository(
         gitHubRepoLocalDataSource: GitHubRepoLocalDataSource,
         gitHubRepoRemoteDataSource: GitHubRepoRemoteDataSource,
         localMapper: Mapper<RepositoryRemote, RepositoryEntity>,
         domainMapper: Mapper<RepositoryEntity, RepoListItemModel>
     )
             : GitHubRepoRepository<RepoListItemModel> {
+
+        return GitHubRepoRepositoryImpl(
+            gitHubRepoLocalDataSource,
+            gitHubRepoRemoteDataSource,
+            localMapper,
+            domainMapper
+        )
+    }
+
+    @Provides
+    fun provideGithubRepoDetailsRepository(
+        gitHubRepoLocalDataSource: GitHubRepoLocalDataSource,
+        gitHubRepoRemoteDataSource: GitHubRepoRemoteDataSource,
+        localMapper: Mapper<RepositoryRemote, RepositoryEntity>,
+        domainMapper: Mapper<RepositoryEntity, RepoDetailsModel>
+    )
+            : GitHubRepoRepository<RepoDetailsModel> {
 
         return GitHubRepoRepositoryImpl(
             gitHubRepoLocalDataSource,

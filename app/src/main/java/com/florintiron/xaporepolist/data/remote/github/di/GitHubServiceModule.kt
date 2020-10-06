@@ -10,6 +10,7 @@ import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 /**
  * Created by Florin Tiron on 04/10/2020.
@@ -24,6 +25,7 @@ class GitHubServiceModule {
 
 
     @Provides
+    @Singleton
     fun provideGitHubService(): GithubServiceApi {
 
         return Retrofit.Builder()

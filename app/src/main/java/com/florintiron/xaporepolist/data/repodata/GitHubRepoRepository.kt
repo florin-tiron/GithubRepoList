@@ -7,5 +7,5 @@ import com.florintiron.xaporepolist.data.util.DataResult
  */
 interface GitHubRepoRepository<R> {
     suspend fun getRepositories(): DataResult<List<R>>
-    suspend fun getDetailedRepository(id: Int): DataResult<R>
+    suspend fun getDetailedRepository(id: String): DataResult<R>
 }

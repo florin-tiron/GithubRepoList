@@ -24,7 +24,7 @@ class GitHubRepoRepositoryImpl<R> constructor(
             when (val result = remoteDateSource.getRepositories()) {
                 is DataResult.Success -> {
                     val localList = localMapper.mapList(result.data.items)
-                    localDataSource.saveRepositories(localList)
+                    localDataSource.saveGitHubRepos(localList)
                     DataResult.Success(domainMapper.mapList(localList))
                 }
                 is DataResult.Error -> {
@@ -36,12 +36,12 @@ class GitHubRepoRepositoryImpl<R> constructor(
         }
     }
 
-    override suspend fun getDetailedRepository(id: Int): DataResult<R> {
+    override suspend fun getDetailedRepository(id: String): DataResult<R> {
         return try {
-            when (val result = localDataSource.getRepositories()) {
+            when (val result = localDataSource.getGitHubRepos()) {
                 is DataResult.Success -> {
                     val entity = result.data.firstOrNull {
-                        it.id == id
+                        it.id == id.toInt()
                     }
                     entity?.let {
                         DataResult.Success(domainMapper.map(it))

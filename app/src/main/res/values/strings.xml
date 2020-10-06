@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Xapo Repo List</string>
+    <string name="repo_details_yes">yes</string>
+    <string name="repo_details_no">no</string>
+    <string name="repo_details_name_label">Name:</string>
+    <string name="repo_details_description_label">Description:</string>
+    <string name="repo_details_issues_label">Does it have issues?</string>
+    <string name="repo_details_owner_label">Owner:</string>
 </resources>

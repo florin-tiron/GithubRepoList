@@ -12,7 +12,7 @@ class GitHubRepoLocalCacheDataSource @Inject constructor() :
 
     var repoList: List<RepositoryEntity>? = null
 
-    override suspend fun getRepositories(): DataResult<List<RepositoryEntity>> {
+    override suspend fun getGitHubRepos(): DataResult<List<RepositoryEntity>> {
         return repoList?.let {
             DataResult.Success(it)
         } ?: DataResult.Error(LocalDataException.Empty)
@@ -20,7 +20,7 @@ class GitHubRepoLocalCacheDataSource @Inject constructor() :
     }
 
 
-    override suspend fun saveRepositories(data: List<RepositoryEntity>) {
+    override suspend fun saveGitHubRepos(data: List<RepositoryEntity>) {
         repoList = data
     }
 
