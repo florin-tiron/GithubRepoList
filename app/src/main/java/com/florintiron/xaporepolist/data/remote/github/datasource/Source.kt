@@ -13,7 +13,7 @@ sealed class Source {
         internal val resultsCount = 20
         protected abstract val date: String
         override val queryText by lazy {
-            "language:$language created:$date"
+            "language:$language created:>$date"
         }
 
         class Weekly(language: String) : Trending(language) {

@@ -10,4 +10,5 @@ data class RepoDetailsModel(
     val createdAt: String,
     val hasIssue: Boolean,
     val ownerName: String,
+    val stars: Int
 )

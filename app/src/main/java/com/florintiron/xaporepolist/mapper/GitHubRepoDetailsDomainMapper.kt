@@ -19,7 +19,8 @@ class GitHubRepoDetailsDomainMapper :
             input.htmlUrl,
             input.createdAt,
             input.issueCount > 0,
-            input.owner.name
+            input.owner.name,
+            input.stargazersCount
         )
     }
 
