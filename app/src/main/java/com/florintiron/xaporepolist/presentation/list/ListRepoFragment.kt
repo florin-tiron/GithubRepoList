@@ -23,7 +23,7 @@ class ListRepoFragment : BaseFragment() {
 
     private lateinit var listRepoViewModel: ListRepoViewModel
 
-    val listRepoAdapter = ListRepoAdapter()
+    private val listRepoAdapter = ListRepoAdapter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +45,11 @@ class ListRepoFragment : BaseFragment() {
 
         setupView()
         setupObservers()
+        listRepoViewModel.loadList()
     }
 
     private fun setupView() {
+        activity?.title = getString(R.string.list_repo_title)
         repoList.layoutManager = LinearLayoutManager(requireContext())
         repoList.addItemDecoration(
             DividerItemDecoration(
@@ -73,10 +75,6 @@ class ListRepoFragment : BaseFragment() {
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-        listRepoViewModel.loadList()
-    }
 
     private fun navigateToDetails(model: RepoListItemModel) {
         findNavController().navigate(ListRepoFragmentDirections.displayRepositoryDetails(model.id))

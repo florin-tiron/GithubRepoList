@@ -47,6 +47,7 @@ class RepoDetailsFragment : BaseFragment() {
             issuesTv.text =
                 getString(if (it.hasIssue) R.string.repo_details_yes else R.string.repo_details_no)
             ownerTv.text = it.ownerName
+            activity?.title = it.name
         })
     }
 }

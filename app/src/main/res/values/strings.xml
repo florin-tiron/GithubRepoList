@@ -6,4 +6,6 @@
     <string name="repo_details_description_label">Description:</string>
     <string name="repo_details_issues_label">Does it have issues?</string>
     <string name="repo_details_owner_label">Owner:</string>
+
+    <string name="list_repo_title">Trending Kotlin</string>
 </resources>
