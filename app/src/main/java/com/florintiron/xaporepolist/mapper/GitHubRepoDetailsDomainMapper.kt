@@ -14,6 +14,7 @@ class GitHubRepoDetailsDomainMapper :
 
     override fun map(input: RepositoryEntity): RepoDetailsModel {
         return RepoDetailsModel(
+            input.id.toString(),
             input.name,
             input.description ?: NOT_AVAILABLE_DESCRIPTION_VALUE,
             input.htmlUrl,

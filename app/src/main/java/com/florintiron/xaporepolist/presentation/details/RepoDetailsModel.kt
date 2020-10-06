@@ -4,6 +4,7 @@ package com.florintiron.xaporepolist.presentation.details
  * Created by Florin Tiron on 05/10/2020.
  */
 data class RepoDetailsModel(
+    val id: String,
     val name: String,
     val description: String,
     val url: String,

@@ -20,11 +20,12 @@ class ListRepoViewModel @Inject constructor(
     private val gitHubRepoRepository: GitHubRepoRepository<RepoListItemModel>
 ) : ViewModel() {
 
+
     private val _repoList = MutableLiveData<List<RepoListItemModel>>()
     val repoList: LiveData<List<RepoListItemModel>> = _repoList
 
-    private val _isLoading = MutableLiveData(true)
-    val isLoadingData: LiveData<Boolean> = _isLoading
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean> = _isLoading
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage

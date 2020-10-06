@@ -63,7 +63,7 @@ class ListRepoFragment : BaseFragment() {
     }
 
     private fun setupObservers() {
-        listRepoViewModel.isLoadingData.observe(viewLifecycleOwner, {
+        listRepoViewModel.isLoading.observe(viewLifecycleOwner, {
             loadingPb.visibility = if (it) View.VISIBLE else View.GONE
         })
 
