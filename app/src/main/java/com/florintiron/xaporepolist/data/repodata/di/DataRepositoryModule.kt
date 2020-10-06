@@ -1,9 +1,11 @@
 package com.florintiron.xaporepolist.data.repodata.di
 
 import com.florintiron.xaporepolist.data.local.GitHubRepoLocalDataSource
+import com.florintiron.xaporepolist.data.local.LocalDataSourceModule
 import com.florintiron.xaporepolist.data.local.RepositoryEntity
-import com.florintiron.xaporepolist.data.remote.GitHubRepoRemoteDataSource
+import com.florintiron.xaporepolist.data.remote.RemoteDataSourceModule
 import com.florintiron.xaporepolist.data.remote.di.ServiceControllerModule
+import com.florintiron.xaporepolist.data.remote.github.datasource.GitHubRepoRemoteDataSourceFactory
 import com.florintiron.xaporepolist.data.remote.github.di.GitHubServiceModule
 import com.florintiron.xaporepolist.data.remote.github.model.RepositoryRemote
 import com.florintiron.xaporepolist.data.repodata.GitHubRepoRepository
@@ -22,14 +24,15 @@ import dagger.Provides
     includes = [
         GitHubServiceModule::class,
         ServiceControllerModule::class,
-        DataSourceModule::class]
+        RemoteDataSourceModule::class,
+        LocalDataSourceModule::class]
 )
 class DataRepositoryModule {
 
     @Provides
     fun provideGithubRepoListRepository(
         gitHubRepoLocalDataSource: GitHubRepoLocalDataSource,
-        gitHubRepoRemoteDataSource: GitHubRepoRemoteDataSource,
+        gitHubRepoRemoteDataSourceFactory: GitHubRepoRemoteDataSourceFactory,
         localMapper: Mapper<RepositoryRemote, RepositoryEntity>,
         domainMapper: Mapper<RepositoryEntity, RepoListItemModel>
     )
@@ -37,7 +40,7 @@ class DataRepositoryModule {
 
         return GitHubRepoRepositoryImpl(
             gitHubRepoLocalDataSource,
-            gitHubRepoRemoteDataSource,
+            gitHubRepoRemoteDataSourceFactory,
             localMapper,
             domainMapper
         )
@@ -46,7 +49,7 @@ class DataRepositoryModule {
     @Provides
     fun provideGithubRepoDetailsRepository(
         gitHubRepoLocalDataSource: GitHubRepoLocalDataSource,
-        gitHubRepoRemoteDataSource: GitHubRepoRemoteDataSource,
+        gitHubRepoRemoteDataSourceFactory: GitHubRepoRemoteDataSourceFactory,
         localMapper: Mapper<RepositoryRemote, RepositoryEntity>,
         domainMapper: Mapper<RepositoryEntity, RepoDetailsModel>
     )
@@ -54,7 +57,7 @@ class DataRepositoryModule {
 
         return GitHubRepoRepositoryImpl(
             gitHubRepoLocalDataSource,
-            gitHubRepoRemoteDataSource,
+            gitHubRepoRemoteDataSourceFactory,
             localMapper,
             domainMapper
         )

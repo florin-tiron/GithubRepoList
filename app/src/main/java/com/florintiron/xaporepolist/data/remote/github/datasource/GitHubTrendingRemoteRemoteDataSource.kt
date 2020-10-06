@@ -1,4 +1,4 @@
-package com.florintiron.xaporepolist.data.remote
+package com.florintiron.xaporepolist.data.remote.github.datasource
 
 import com.florintiron.xaporepolist.data.remote.exception.RemoteDataException
 import com.florintiron.xaporepolist.data.remote.github.model.RepositoryRemote
@@ -13,17 +13,20 @@ import com.florintiron.xaporepolist.data.util.DataResult
  * Created by Florin Tiron on 04/10/2020.
  */
 
-class GitHubTrendingRemoteRemoteDataSource(private val githubApiServiceController: GithubServiceController) :
+class GitHubTrendingRemoteRemoteDataSource(
+    private val githubApiServiceController: GithubServiceController,
+    private val queryText: String,
+    private val resultsCount: Int
+) :
     GitHubRepoRemoteDataSource {
 
     override suspend fun getRepositories(): DataResult<SearchResponse<RepositoryRemote>> {
 
         val response = githubApiServiceController.getRepositoryList(
-            QUERY_TEXT,
+            queryText,
             Sort.STARS,
             Order.DESCENDING,
-            RETURNED_RESULTS,
-            FIRST_PAGE
+            resultsCount
         )
 
         return if (response.isSuccessful) {
@@ -34,13 +37,4 @@ class GitHubTrendingRemoteRemoteDataSource(private val githubApiServiceControlle
             DataResult.Error(RemoteDataException.ServerError(response.code()))
         }
     }
-
-
-    companion object {
-        private const val QUERY_TEXT = "language:kotlin"
-        private const val RETURNED_RESULTS = 100
-        private const val FIRST_PAGE = 1
-
-    }
-
 }

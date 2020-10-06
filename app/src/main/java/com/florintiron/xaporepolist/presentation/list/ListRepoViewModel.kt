@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.florintiron.xaporepolist.data.remote.github.datasource.Source
 import com.florintiron.xaporepolist.data.repodata.GitHubRepoRepository
 import com.florintiron.xaporepolist.data.util.DataResult
 import kotlinx.coroutines.launch
@@ -12,6 +13,8 @@ import javax.inject.Inject
 /**
  * Created by Florin Tiron on 04/10/2020.
  */
+
+private const val REPOSITORY_LANGUAGE = "kotlin"
 
 class ListRepoViewModel @Inject constructor(
     private val gitHubRepoRepository: GitHubRepoRepository<RepoListItemModel>
@@ -31,7 +34,8 @@ class ListRepoViewModel @Inject constructor(
         _isLoading.value = true
 
         viewModelScope.launch {
-            when (val result = gitHubRepoRepository.getRepositories()) {
+            when (val result =
+                gitHubRepoRepository.getRepositories(Source.Trending.Weekly(REPOSITORY_LANGUAGE))) {
                 is DataResult.Success -> {
                     handleDataRetrieveSuccess(result.data)
                 }

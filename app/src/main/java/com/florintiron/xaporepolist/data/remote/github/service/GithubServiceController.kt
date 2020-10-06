@@ -15,7 +15,7 @@ interface GithubServiceController {
         sort: Sort?,
         sortOrder: Order?,
         resultPerPage: Int?,
-        pageNumber: Int?
+        pageNumber: Int? = null
     ): Response<SearchResponse<RepositoryRemote>>
 
 }

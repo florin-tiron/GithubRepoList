@@ -2,7 +2,8 @@ package com.florintiron.xaporepolist.data.repodata
 
 import com.florintiron.xaporepolist.data.local.GitHubRepoLocalDataSource
 import com.florintiron.xaporepolist.data.local.RepositoryEntity
-import com.florintiron.xaporepolist.data.remote.GitHubRepoRemoteDataSource
+import com.florintiron.xaporepolist.data.remote.github.datasource.GitHubRepoRemoteDataSourceFactory
+import com.florintiron.xaporepolist.data.remote.github.datasource.Source
 import com.florintiron.xaporepolist.data.remote.github.model.RepositoryRemote
 import com.florintiron.xaporepolist.data.util.DataResult
 import com.florintiron.xaporepolist.mapper.Mapper
@@ -13,15 +14,15 @@ import com.florintiron.xaporepolist.mapper.Mapper
 
 class GitHubRepoRepositoryImpl<R> constructor(
     private val localDataSource: GitHubRepoLocalDataSource,
-    private val remoteDateSource: GitHubRepoRemoteDataSource,
+    private val remoteDateSourceFactory: GitHubRepoRemoteDataSourceFactory,
     private val localMapper: Mapper<RepositoryRemote, RepositoryEntity>,
     private val domainMapper: Mapper<RepositoryEntity, R>
 ) : GitHubRepoRepository<R> {
 
 
-    override suspend fun getRepositories(): DataResult<List<R>> {
+    override suspend fun getRepositories(source: Source): DataResult<List<R>> {
         return try {
-            when (val result = remoteDateSource.getRepositories()) {
+            when (val result = remoteDateSourceFactory.create(source).getRepositories()) {
                 is DataResult.Success -> {
                     val localList = localMapper.mapList(result.data.items)
                     localDataSource.saveGitHubRepos(localList)
@@ -55,4 +56,6 @@ class GitHubRepoRepositoryImpl<R> constructor(
             return DataResult.Error(ex)
         }
     }
+
 }
+

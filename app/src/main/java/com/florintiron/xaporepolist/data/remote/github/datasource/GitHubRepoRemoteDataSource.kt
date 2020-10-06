@@ -1,4 +1,4 @@
-package com.florintiron.xaporepolist.data.remote
+package com.florintiron.xaporepolist.data.remote.github.datasource
 
 import com.florintiron.xaporepolist.data.remote.github.model.RepositoryRemote
 import com.florintiron.xaporepolist.data.remote.github.model.SearchResponse
