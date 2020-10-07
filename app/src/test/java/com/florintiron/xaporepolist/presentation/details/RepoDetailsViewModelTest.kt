@@ -56,7 +56,8 @@ class RepoDetailsViewModelTest {
     @Test
     fun getDetails_success_showDetails() {
         val repoDetailsModel = RepoDetailsModel(
-            "A name",
+            "101001",
+            "GitHub Repo",
             "A description",
             "https://github.com",
             "2020-10-05",
