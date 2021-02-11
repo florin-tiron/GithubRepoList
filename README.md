@@ -1,5 +1,5 @@
-# XapoRepoList
+# GithubRepoList
 
 Android app:
- * Lists Github repositories
- * Show reposity details
+ * Lists trending Kotlin repositories from Github
+ * Display repository details
