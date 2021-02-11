@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/listRepositoriesFragment"
-        android:name="com.florintiron.xaporepolist.presentation.list.ListRepoFragment"
+        android:name="com.florintiron.repolist.presentation.list.ListRepoFragment"
         android:label="ListRepoFragment">
         <action
             android:id="@+id/displayRepositoryDetails"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/repositoryDetailsFragment"
-        android:name="com.florintiron.xaporepolist.presentation.details.RepoDetailsFragment"
+        android:name="com.florintiron.repolist.presentation.details.RepoDetailsFragment"
         android:label="RepoDetailsFragment">
         <argument
             android:name="id"

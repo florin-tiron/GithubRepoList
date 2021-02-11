@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Xapo Repo List</string>
+    <string name="app_name">Repo List</string>
     <string name="repo_details_yes">yes</string>
     <string name="repo_details_no">no</string>
     <string name="repo_details_name_label">Name:</string>

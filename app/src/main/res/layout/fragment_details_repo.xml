@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.florintiron.xaporepolist.presentation.details.RepoDetailsViewModel" />
+            type="com.florintiron.repolist.presentation.details.RepoDetailsViewModel" />
     </data>
 
     <LinearLayout
